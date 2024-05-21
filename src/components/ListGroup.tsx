@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { MouseEvent } from "react";
 
-function ListGroup() {
-  let items = ["Sydney", "Tokyo", "Krabi", "Bali", "Bangkok", "Ho Chi Min"];
+interface Props {
+  items: string[];
+  heading: string;
+}
+
+function ListGroup({ items, heading }: Props) {
   //let selectedIndex = -1;
   // Event handle
   //const handleClick = (event: MouseEvent) => console.log("Clicked", event);
@@ -10,7 +14,7 @@ function ListGroup() {
   return (
     //  to create multiple components use fragment
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {
         items.length === 0 && (
           <p>No item found</p>
