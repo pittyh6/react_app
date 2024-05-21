@@ -1,6 +1,12 @@
+import React, { useState } from "react";
+import { MouseEvent } from "react";
+
 function ListGroup() {
   let items = ["Sydney", "Tokyo", "Krabi", "Bali", "Bangkok", "Ho Chi Min"];
-  items = [];
+  //let selectedIndex = -1;
+  // Event handle
+  //const handleClick = (event: MouseEvent) => console.log("Clicked", event);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     //  to create multiple components use fragment
     <>
@@ -11,8 +17,21 @@ function ListGroup() {
         ) /* if the items =0 than show No item found. Same as {items.length === 0 ? <p>No item found</p> : null} */
       }
       <ul className="list-group">
-        {items.map((item) => (
-          <li key={item}>{item}</li>
+        {items.map((item, index) => (
+          <li
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
+            key={item}
+            //onClick={handleClick}
+            onClick={() => {
+              setSelectedIndex(index);
+            }}
+          >
+            {item}
+          </li>
         ))}
       </ul>
     </>
