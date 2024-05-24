@@ -4,9 +4,10 @@ import { MouseEvent } from "react";
 interface Props {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-function ListGroup({ items, heading }: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   //let selectedIndex = -1;
   // Event handle
   //const handleClick = (event: MouseEvent) => console.log("Clicked", event);
@@ -32,6 +33,7 @@ function ListGroup({ items, heading }: Props) {
             //onClick={handleClick}
             onClick={() => {
               setSelectedIndex(index);
+              onSelectItem(item);
             }}
           >
             {item}
